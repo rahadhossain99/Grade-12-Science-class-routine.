@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজ - রুটিন অ্যাপ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Hind Siliguri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Custom CSS for ultimate design -->
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f0f4f8;
+        }
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-gradient-bg {
+            background: linear-gradient(145deg, #0c4a6e 0%, #1e40af 50%, #3b82f6 100%);
+        }
+        .mobile-mockup-ultimate {
+            position: relative;
+            width: 280px;
+            height: 570px;
+            background: #1f2937;
+            border-radius: 44px;
+            box-shadow: 0 40px 80px -25px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.1);
+            padding: 14px;
+            margin: auto;
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.6s;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: perspective(1000px) translateY(0px) rotateY(0deg) rotateX(0deg); }
+            50% { transform: perspective(1000px) translateY(-20px) rotateY(5deg) rotateX(3deg); }
+            100% { transform: perspective(1000px) translateY(0px) rotateY(0deg) rotateX(0deg); }
+        }
+        .mockup-screen-ultimate {
+            background-color: #000;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .mockup-screen-ultimate img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .feature-card, .testimonial-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+        }
+        .feature-card:hover, .testimonial-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px -15px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .animated-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .animated-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: skewX(-25deg);
+            transition: all 0.8s;
+        }
+        .btn-shine:hover::before {
+            left: 150%;
+        }
+        .textured-bg {
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dbeafe' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .developer-section-bg {
+            background-color: #0f172a; /* slate-900 */
+            background-image: radial-gradient(#475569 1px, transparent 1px), radial-gradient(#475569 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header Section -->
+    <header class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 shadow-md transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500">সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজ</h1>
+            <nav class="hidden md:flex items-center space-x-8 font-semibold">
+                <a href="#college" class="text-slate-600 hover:text-blue-600 transition">কলেজ</a>
+                <a href="#features" class="text-slate-600 hover:text-blue-600 transition">ফিচার</a>
+                <a href="#testimonials" class="text-slate-600 hover:text-blue-600 transition">মন্তব্য</a>
+                <a href="#faq" class="text-slate-600 hover:text-blue-600 transition">প্রশ্নোত্তর</a>
+                <a href="#developer" class="text-slate-600 hover:text-blue-600 transition">ডেভেলপার</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-gradient-bg text-white pt-24 pb-20 md:pb-32 overflow-hidden">
+            <div class="container mx-auto px-6 text-center">
+                <div class="animated-element">
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">আপনার পড়াশোনাকে করুন আরও সহজ ও গতিময়</h1>
+                    <p class="text-lg md:text-xl text-blue-100 mb-12 max-w-3xl mx-auto">সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজের দ্বাদশ শ্রেণির (বিজ্ঞান) শিক্ষার্থীদের জন্য দুটি বিশেষায়িত অ্যাপ। আপনার পছন্দের ভার্সনটি বেছে নিন।</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-16 items-start">
+                    <!-- App Version 1 -->
+                    <div class="animated-element" style="transition-delay: 150ms;">
+                        <span class="bg-white/20 text-white text-sm font-bold px-4 py-1 rounded-full mb-6 inline-block">ক্লাসিক সংস্করণ</span>
+                        <div class="mobile-mockup-ultimate">
+                            <div class="mockup-screen-ultimate"><img src="https://i.postimg.cc/TYTbzjs2/Screenshot-20250703-131701-College-Routine.png" alt="কলেজ রুটিন অ্যাপ ক্লাসিক সংস্করণ"></div>
+                        </div>
+                        <a id="downloadButton1" href="https://drive.google.com/file/d/1u2dWQwdbdm9yE-e16hPGZAbC9EHjJ0BK/view?usp=drivesdk" target="_blank" class="btn-shine mt-8 inline-block bg-white text-blue-600 font-bold text-lg px-10 py-4 rounded-full hover:bg-slate-100 transition-all transform hover:scale-110 duration-300 shadow-2xl">ডাউনলোড (v1)</a>
+                        <div class="mt-4 text-sm text-blue-200">ডাউনলোড: <span id="downloadCounter1" class="font-inter font-bold">10</span></div>
+                    </div>
+                    <!-- App Version 2 -->
+                    <div class="animated-element" style="transition-delay: 300ms;">
+                        <span class="bg-white/20 text-white text-sm font-bold px-4 py-1 rounded-full mb-6 inline-block">প্রো সংস্করণ</span>
+                        <div class="mobile-mockup-ultimate" style="animation-delay: -3s;">
+                            <div class="mockup-screen-ultimate"><img src="https://i.postimg.cc/kGKyTnDj/Screenshot-20250703-140638-College-Routine.png" alt="কলেজ রুটিন অ্যাপ প্রো সংস্করণ"></div>
+                        </div>
+                        <a id="downloadButton2" href="https://drive.google.com/file/d/1u6nzpLXLgoKl4iuuQJtB2mepmdi2ZIZf/view?usp=drivesdk" target="_blank" class="btn-shine mt-8 inline-block bg-gradient-to-r from-green-400 to-cyan-500 text-white font-bold text-lg px-10 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-110 duration-300 shadow-lg">ডাউনলোড (v2)</a>
+                        <div class="mt-4 text-sm text-blue-200">ডাউনলোড: <span id="downloadCounter2" class="font-inter font-bold">8</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- College Intro Section -->
+        <section id="college" class="py-24 bg-white">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                <div class="animated-element">
+                    <img src="https://i.postimg.cc/QdHFDfJD/FB-IMG-1751530694220.jpg" alt="সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজ ক্যাম্পাস" class="rounded-2xl shadow-2xl w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="animated-element" style="transition-delay: 150ms;">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-5">আমাদের কলেজ, আমাদের গর্ব</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">যশোর জেলার খাজুরাতে অবস্থিত সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজ এই অঞ্চলের একটি ঐতিহ্যবাহী এবং স্বনামধন্য শিক্ষা প্রতিষ্ঠান। আমরা শিক্ষার্থীদের মানসম্মত শিক্ষা প্রদানের মাধ্যমে একটি উজ্জ্বল ভবিষ্যৎ গঠনে প্রতিশ্রুতিবদ্ধ।</p>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                        <h4 class="font-bold text-xl text-blue-800">দ্বাদশ শ্রেণি (বিজ্ঞান বিভাগ)</h4>
+                        <p class="text-blue-700 mt-2">এই অ্যাপটি বিশেষভাবে বিজ্ঞান বিভাগের দ্বাদশ শ্রেণির শিক্ষার্থীদের জন্য তৈরি করা হয়েছে, যাতে তারা তাদের একাডেমিক রুটিন এবং কার্যক্রম সহজে পরিচালনা করতে পারে।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section id="features" class="py-24 textured-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto animated-element">
+                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">আপনার পড়াশোনাকে গুছিয়ে নিন স্মার্ট উপায়ে</h2>
+                    <p class="text-slate-600 mt-4 text-lg">অ্যাপের আধুনিক ফিচারগুলো আপনাকে ক্লাসের সাথে সবসময় আপ-টু-ডেট রাখবে এবং পড়াশোনাকে করবে আরও আনন্দদায়ক।</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+                    <!-- Feature Cards with Custom SVG Icons -->
+                    <div class="feature-card p-6 text-center animated-element" style="transition-delay: 100ms;">
+                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" /><stop offset="100%" style="stop-color:#f87171;stop-opacity:1" /></linearGradient></defs><path fill="url(#g1)" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/><circle fill="url(#g1)" cx="12" cy="12" r="4"/><path fill="white" d="M12,9a3,3,0,1,0,3,3A3,3,0,0,0,12,9Z" class="animate-pulse"/></svg></div>
+                        <h3 class="font-bold text-xl mt-4 text-slate-800">লাইভ ক্লাস ট্র্যাকিং</h3>
+                        <p class="text-slate-600 mt-2 text-sm">কোন ক্লাস চলছে তা অ্যাপ খুললেই দেখুন।</p>
+                    </div>
+                    <div class="feature-card p-6 text-center animated-element" style="transition-delay: 200ms;">
+                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" /><stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" /></linearGradient></defs><path fill="url(#g2)" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/><path fill="url(#g2)" d="M12,6a1,1,0,0,0-1,1v5a1,1,0,0,0,1,1h4a1,1,0,0,0,0-2h-3V7A1,1,0,0,0,12,6Z"/></svg></div>
+                        <h3 class="font-bold text-xl mt-4 text-slate-800">ক্লাস টাইমার</h3>
+                        <p class="text-slate-600 mt-2 text-sm">বর্তমান ক্লাস শেষ হতে কতক্ষণ বাকি আছে জানুন।</p>
+                    </div>
+                    <div class="feature-card p-6 text-center animated-element" style="transition-delay: 300ms;">
+                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#10b981;stop-opacity:1" /><stop offset="100%" style="stop-color:#34d399;stop-opacity:1" /></linearGradient></defs><path fill="url(#g3)" d="M15.71,12.71a1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l2.29,2.29a1,1,0,0,0,1.41-1.41L16.41,13A1,1,0,0,0,15.71,12.71Z"/><path fill="url(#g3)" d="M18.71,10.29l-2.29,2.29a1,1,0,0,0,1.41,1.41l2.29-2.29a1,1,0,0,0-1.41-1.41Z"/><path fill="url(#g3)" d="M4,11H8a1,1,0,0,0,0-2H4a1,1,0,0,0,0,2Z"/><path fill="url(#g3)" d="M10,11h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Z"/></svg></div>
+                        <h3 class="font-bold text-xl mt-4 text-slate-800">পরবর্তী ক্লাসের প্রস্তুতি</h3>
+                        <p class="text-slate-600 mt-2 text-sm">পরের ক্লাস কী এবং কখন শুরু হবে তা দেখুন।</p>
+                    </div>
+                    <div class="feature-card p-6 text-center animated-element" style="transition-delay: 400ms;">
+                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16"><defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" /><stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" /></linearGradient></defs><path fill="url(#g4)" d="M19,4H5A3,3,0,0,0,2,7V17a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,13a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V7A1,1,0,0,1,5,6H19a1,1,0,0,1,1,1Z"/><rect fill="url(#g4)" x="6" y="10" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="11" y="10" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="16" y="10" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="6" y="14" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="11" y="14" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="16" y="14" width="2" height="2" rx="0.5"/></svg></div>
+                        <h3 class="font-bold text-xl mt-4 text-slate-800">সম্পূর্ণ রুটিন</h3>
+                        <p class="text-slate-600 mt-2 text-sm">সপ্তাহের যেকোনো দিনের রুটিন দেখুন এক ক্লিকে।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto animated-element">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">বন্ধুদের চোখে এই অ্যাপ</h2>
+                    <p class="text-slate-600 mt-4 text-lg">আমার সহপাঠী এবং বন্ধুরা অ্যাপটি ব্যবহার করে তাদের মূল্যবান মতামত জানিয়েছে।</p>
+                </div>
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
+                    <!-- Testimonial Card 1 -->
+                    <div class="testimonial-card p-8 text-center animated-element" style="transition-delay: 100ms;">
+                        <div class="w-20 h-20 rounded-full mx-auto mb-5 border-4 border-white shadow-lg bg-blue-100 flex items-center justify-center">
+                            <span class="text-3xl font-bold text-blue-600">সি</span>
+                        </div>
+                        <p class="text-slate-600 italic">"এই অ্যাপটা আমাদের অনেক সময় বাঁচিয়ে দিয়েছে। এখন আর রুটিন নিয়ে ভাবতে হয় না। রাহাদকে ধন্যবাদ এমন একটা কাজের জন্য।"</p>
+                        <h4 class="font-bold text-lg text-blue-600 mt-5">সিয়াম আল সামি</h4>
+                        <p class="text-sm text-slate-500">সহপাঠী</p>
+                    </div>
+                    <!-- Testimonial Card 2 -->
+                    <div class="testimonial-card p-8 text-center animated-element" style="transition-delay: 200ms;">
+                        <div class="w-20 h-20 rounded-full mx-auto mb-5 border-4 border-white shadow-lg bg-green-100 flex items-center justify-center">
+                            <span class="text-3xl font-bold text-green-600">জী</span>
+                        </div>
+                        <p class="text-slate-600 italic">"লাইভ ক্লাস ট্র্যাকিং ফিচারটা অসাধারণ! কোন ক্লাস চলছে বা কোনটা শুরু হবে, সব এক নজরে দেখা যায়। পড়াশোনা এখন অনেক সহজ মনে হয়।"</p>
+                        <h4 class="font-bold text-lg text-green-600 mt-5">জীবন হোসেন</h4>
+                        <p class="text-sm text-slate-500">সহপাঠী</p>
+                    </div>
+                    <!-- Testimonial Card 3 -->
+                    <div class="testimonial-card p-8 text-center animated-element" style="transition-delay: 300ms;">
+                        <div class="w-20 h-20 rounded-full mx-auto mb-5 border-4 border-white shadow-lg bg-purple-100 flex items-center justify-center">
+                            <span class="text-3xl font-bold text-purple-600">রা</span>
+                        </div>
+                        <p class="text-slate-600 italic">"অ্যাপটার ডিজাইন এবং ব্যবহার করার সুবিধা দুটোই চমৎকার। বিশেষ করে প্রো ভার্সনটা আমার খুব পছন্দের। ডেভেলপারকে অনেক শুভেচ্ছা।"</p>
+                        <h4 class="font-bold text-lg text-purple-600 mt-5">রাতুল</h4>
+                        <p class="text-sm text-slate-500">সহপাঠী</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 textured-bg">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center max-w-3xl mx-auto animated-element">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">সাধারণ জিজ্ঞাসা</h2>
+                    <p class="text-slate-600 mt-4 text-lg">অ্যাপটি সম্পর্কে আপনার মনে থাকা কিছু সাধারণ প্রশ্নের উত্তর এখানে দেওয়া হলো।</p>
+                </div>
+                <div class="mt-12 space-y-4" x-data="{}">
+                    <!-- FAQ Item 1 -->
+                    <div x-data="{ open: false }" class="bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md animated-element" style="transition-delay: 100ms;">
+                        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold text-slate-800 p-6">
+                            <span>আমি কি অ্যাপের রুটিন পরিবর্তন বা এডিট করতে পারবো?</span>
+                            <svg :class="{'rotate-180': open}" class="w-6 h-6 text-blue-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-collapse class="text-slate-600">
+                            <p class="px-6 pb-6">আপাতত, ব্যবহারকারীরা অ্যাপের ভেতর থেকে রুটিন পরিবর্তন করতে পারবেন না। রুটিনটি কলেজ কর্তৃপক্ষ দ্বারা নির্ধারিত এবং অ্যাপে নির্দিষ্ট করে দেওয়া আছে। ভবিষ্যতে রুটিন আপডেট হলে অ্যাপের নতুন সংস্করণ প্রকাশ করা হবে।</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div x-data="{ open: false }" class="bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md animated-element" style="transition-delay: 200ms;">
+                        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold text-slate-800 p-6">
+                            <span>অ্যাপটির দুটি ভার্সন (ক্লাসিক ও প্রো) এর মধ্যে পার্থক্য কী?</span>
+                            <svg :class="{'rotate-180': open}" class="w-6 h-6 text-blue-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-collapse class="text-slate-600">
+                           <p class="px-6 pb-6">ক্লাসিক সংস্করণটিতে প্রয়োজনীয় সকল ফিচার রয়েছে। প্রো সংস্করণটিতে কিছু অতিরিক্ত সুবিধা, যেমন - বিজ্ঞাপনমুক্ত ইন্টারফেস, বিশেষ থিম এবং আরও উন্নত ট্র্যাকিং সিস্টেম যুক্ত করা হয়েছে যা আপনার অভিজ্ঞতাকে আরও সমৃদ্ধ করবে।</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div x-data="{ open: false }" class="bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md animated-element" style="transition-delay: 300ms;">
+                        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold text-slate-800 p-6">
+                            <span>অ্যাপটি ব্যবহার করতে কি ইন্টারনেট সংযোগ প্রয়োজন?</span>
+                            <svg :class="{'rotate-180': open}" class="w-6 h-6 text-blue-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-collapse class="text-slate-600">
+                            <p class="px-6 pb-6">অ্যাপটি একবার ইনস্টল করার পর রুটিন দেখার জন্য কোনো ইন্টারনেট সংযোগের প্রয়োজন নেই। এটি সম্পূর্ণ অফলাইনে কাজ করে। তবে অ্যাপের নতুন আপডেট ডাউনলোড করার জন্য ইন্টারনেট লাগবে।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Developer Section -->
+        <section id="developer" class="py-24 developer-section-bg overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="relative bg-slate-800/70 backdrop-blur-xl rounded-3xl p-8 md:p-12 grid md:grid-cols-2 gap-12 items-center shadow-2xl animated-element border border-slate-700">
+                    <div class="relative z-10 text-center md:text-left">
+                        <div class="w-32 h-32 rounded-full shadow-2xl mb-6 border-4 border-slate-700 bg-slate-200 flex items-center justify-center mx-auto md:mx-0">
+                           <span class="text-5xl font-bold text-slate-600">রা</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">অ্যাপটির কারিগর</h2>
+                        <p class="text-2xl text-cyan-400 mt-2 font-semibold">রাহাদ হোসেন</p>
+                        <p class="text-slate-300 mt-4 max-w-lg mx-auto md:mx-0">এই কলেজেরই একজন শিক্ষার্থী হিসেবে, আমি আমার বন্ধুদের এবং জুনিয়রদের পড়াশোনা সহজ করার লক্ষ্যে এই অ্যাপটি তৈরি করেছি। আপনাদের মতামত ও পরামর্শ सादर आमंत्रित।</p>
+                    </div>
+                    <div class="relative z-10 flex flex-col space-y-4">
+                        <a href="https://www.facebook.com/share/16xp26JpwM/" target="_blank" class="group flex items-center bg-blue-600 text-white px-6 py-4 rounded-xl hover:bg-blue-500 transition-all transform hover:scale-105 duration-300 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="transition-transform group-hover:rotate-[-5deg]"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                            <span class="ml-4 font-semibold text-lg">ফেসবুকে যোগাযোগ</span>
+                        </a>
+                        <a href="mailto:hossainrahad632@gmail.com" class="group flex items-center bg-slate-700 text-white px-6 py-4 rounded-xl hover:bg-slate-600 transition-all transform hover:scale-105 duration-300 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform group-hover:rotate-[5deg]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            <span class="ml-4 font-semibold text-lg">ইমেইল করুন</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900">
+        <div class="container mx-auto px-6 py-6 text-center text-slate-400 text-sm border-t border-slate-800">
+            <p>&copy; <span class="font-inter">2024</span> সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজ। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Counters & Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Counters
+            const setupCounter = (buttonId, counterId, storageKey, initialValue) => {
+                const button = document.getElementById(buttonId);
+                const counterElement = document.getElementById(counterId);
+                let count = parseInt(localStorage.getItem(storageKey)) || initialValue;
+                const updateCounter = () => { counterElement.innerText = count.toLocaleString('bn-BD'); };
+                updateCounter();
+                button.addEventListener('click', () => { setTimeout(() => { count++; localStorage.setItem(storageKey, count); updateCounter(); }, 300); });
+            };
+            setupCounter('downloadButton1', 'downloadCounter1', 'appDownloadCountV1_ultimate', 10);
+            setupCounter('downloadButton2', 'downloadCounter2', 'appDownloadCountV2_ultimate', 8);
+
+            // Scroll Animations
+            const animatedElements = document.querySelectorAll('.animated-element');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
