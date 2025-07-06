@@ -10,35 +10,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Alpine.js for interactivity -->
+    <!-- Animate.css for stunning scroll animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Alpine.js for interactivity (defer for performance) -->
     <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Custom CSS for ultimate design -->
+    <!-- Custom CSS for ultimate design and responsiveness -->
     <style>
+        /* Base styles for body and fonts */
         body {
             font-family: 'Hind Siliguri', sans-serif;
             scroll-behavior: smooth;
-            background-color: #f0f4f8;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            line-height: 1.6;
+            color: #334155; /* Slate-700 for general text */
+            overflow-x: hidden; /* Prevent horizontal scroll on small screens */
         }
         .font-inter {
             font-family: 'Inter', sans-serif;
         }
+
+        /* Hero Section Background Gradient */
         .hero-gradient-bg {
-            background: linear-gradient(145deg, #0c4a6e 0%, #1e40af 50%, #3b82f6 100%);
+            background: linear-gradient(145deg, #0c4a6e 0%, #1e40af 50%, #3b82f6 100%); /* Deep blue to light blue gradient */
         }
+
+        /* Mobile Mockup Animations and Styling */
         .mobile-mockup-ultimate {
             position: relative;
             width: 280px;
             height: 570px;
-            background: #1f2937;
+            background: #1f2937; /* Dark slate background */
             border-radius: 44px;
             box-shadow: 0 40px 80px -25px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.1);
             padding: 14px;
             margin: auto;
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.6s;
             transform-style: preserve-3d;
-            animation: float 6s ease-in-out infinite;
+            animation: float 6s ease-in-out infinite; /* Floating animation */
         }
+        /* Keyframes for the floating animation */
         @keyframes float {
             0% { transform: perspective(1000px) translateY(0px) rotateY(0deg) rotateX(0deg); }
             50% { transform: perspective(1000px) translateY(-20px) rotateY(5deg) rotateX(3deg); }
@@ -56,32 +67,38 @@
             height: 100%;
             object-fit: cover;
         }
+
+        /* Feature and Testimonial Card Styling */
         .feature-card, .testimonial-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+            backdrop-filter: blur(20px); /* Frosted glass effect */
             -webkit-backdrop-filter: blur(20px);
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); /* Smooth transition for hover */
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); /* Subtle shadow */
         }
         .feature-card:hover, .testimonial-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px -15px rgba(0,0,0,0.15);
-            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-15px); /* Lift effect on hover */
+            box-shadow: 0 25px 50px -15px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
+            background: rgba(255, 255, 255, 0.95); /* Less transparent on hover */
         }
+
+        /* Scroll Animation for Elements (integrating Animate.css) */
+        /* .animated-element will now use Animate.css classes */
         .animated-element {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+            opacity: 0; /* Start hidden */
         }
         .animated-element.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1; /* Animate.css will handle the fade-in/up */
         }
+
+        /* Shine Effect for Buttons */
         .btn-shine {
             position: relative;
             overflow: hidden;
+            z-index: 1; /* Ensure shine is above button content */
+            transition: all 0.3s ease-in-out; /* Smooth general button transition */
         }
         .btn-shine::before {
             content: '';
@@ -92,35 +109,180 @@
             height: 100%;
             background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
             transform: skewX(-25deg);
-            transition: all 0.8s;
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1); /* Smooth shine transition */
+            z-index: -1; /* Place behind text */
         }
         .btn-shine:hover::before {
-            left: 150%;
+            left: 150%; /* Move shine across button */
         }
+
+        /* Textured Background for Sections */
         .textured-bg {
             background-color: #ffffff;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dbeafe' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
+
+        /* Developer Section Background Pattern */
         .developer-section-bg {
             background-color: #0f172a; /* slate-900 */
             background-image: radial-gradient(#475569 1px, transparent 1px), radial-gradient(#475569 1px, transparent 1px);
             background-size: 40px 40px;
             background-position: 0 0, 20px 20px;
         }
+
+        /* Routine Table Specific Styles */
+        .routine-table-container {
+            overflow-x: auto; /* Allows horizontal scrolling on small screens */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            border-radius: 16px; /* Rounded corners for the container */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* Soft shadow for the table */
+            border: 1px solid #e2e8f0; /* Light border */
+        }
+        .routine-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; /* Adjusted min-width after removing columns */
+            background-color: #ffffff; /* White background for the table */
+        }
+        .routine-table th, .routine-table td {
+            border: 1px solid #e2e8f0; /* slate-200 borders */
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 0.95rem; /* Slightly larger font for readability */
+        }
+        .routine-table th {
+            background-color: #e0f2fe; /* blue-50 */
+            color: #1e40af; /* blue-800 */
+            font-weight: 700;
+            white-space: nowrap; /* Prevents text wrapping in headers */
+            position: sticky; /* Sticky headers for better UX on scroll */
+            top: 0;
+            z-index: 2;
+        }
+        .routine-table td {
+            background-color: #ffffff;
+            color: #475569; /* slate-700 */
+            transition: background-color 0.2s ease-in-out; /* Smooth transition for cell background */
+        }
+        .routine-table tbody tr:nth-child(odd) td {
+            background-color: #f8fafc; /* slate-50 for odd rows */
+        }
+        .routine-table .empty-slot-cell {
+            background-color: #f8fafc; /* slate-50 for empty slots */
+            color: #94a3b8; /* slate-400 */
+            font-style: italic;
+        }
+
+        /* Styles for editable cells */
+        .routine-table td[contenteditable="true"] {
+            background-color: #fffbeb; /* amber-50 */
+            border: 1px dashed #f59e0b; /* amber-500 dashed border */
+            cursor: text;
+        }
+        .routine-table td[contenteditable="true"]:focus {
+            outline: 2px solid #2563eb; /* blue-600 outline on focus */
+            background-color: #eff6ff; /* blue-50 on focus */
+        }
+
+        /* Custom Modal for Alerts */
+        #customAlertModal {
+            transition: opacity 0.3s ease-out;
+        }
+        #customAlertModal > div {
+            transition: transform 0.3s ease-out;
+        }
+
+        /* Print styles - CRITICAL FOR PRINTING FIX */
+        @media print {
+            body {
+                background-color: #fff !important; /* Force white background for the entire page */
+                -webkit-print-color-adjust: exact !important; /* Ensures background colors and images print */
+                print-color-adjust: exact !important;
+                color: #000 !important; /* Ensure all text is black */
+            }
+            /* Hide non-essential elements for printing */
+            header, footer, .hero-gradient-bg, #developer, #faq, #testimonials, #features, #college, .btn-shine, .mobile-mockup-ultimate, .animated-element, .print-edit-buttons-container, #customAlertModal, .mobile-menu-overlay, .print-hidden-text {
+                display: none !important;
+            }
+            /* Ensure the routine table section is visible and has no extra margins/paddings */
+            .routine-table-section {
+                display: block !important;
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+                box-shadow: none !important; /* Remove shadow for print */
+                border: none !important; /* Remove container border for print */
+            }
+            .routine-table-container {
+                overflow-x: visible !important; /* No horizontal scroll in print */
+                box-shadow: none !important; /* Remove shadow for print */
+                border: none !important; /* Remove container border for print */
+            }
+            .routine-table {
+                width: 100% !important;
+                min-width: unset !important; /* Allow table to shrink/expand as needed */
+                font-size: 10px !important; /* Slightly smaller font for more content on page */
+                border-collapse: collapse !important; /* Ensure borders are respected */
+                background-color: #ffffff !important; /* Force white background for the table */
+            }
+            .routine-table th, .routine-table td {
+                padding: 6px 4px !important; /* Reduced padding for print */
+                border: 1px solid #bfdbfe !important; /* blue-200, ensure borders print clearly */
+                background-color: #ffffff !important; /* Force white background for cells */
+                color: #000 !important; /* Force black text for readability */
+            }
+            .routine-table th {
+                background-color: #e0f2fe !important; /* blue-50 for header background */
+                color: #1e40af !important; /* blue-800 for header text */
+            }
+            .routine-table tbody tr:nth-child(odd) td {
+                background-color: #f8fafc !important; /* slate-50 for odd rows background */
+            }
+            .routine-table .empty-slot-cell {
+                background-color: #f8fafc !important; /* slate-50 for empty slots */
+                color: #94a3b8 !important; /* slate-400 for empty slot text */
+            }
+            /* Ensure editable cell styles are removed for printing */
+            .routine-table td[contenteditable="true"] {
+                background-color: #ffffff !important; /* No highlight when printing */
+                border: 1px solid #e2e8f0 !important; /* Standard border */
+                outline: none !important; /* No outline */
+                cursor: default !important; /* No text cursor */
+            }
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
     <!-- Header Section -->
-    <header class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 shadow-md transition-all duration-300">
+    <header class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 shadow-md transition-all duration-300" x-data="{ open: false }">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500">সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজ</h1>
             <nav class="hidden md:flex items-center space-x-8 font-semibold">
-                <a href="#college" class="text-slate-600 hover:text-blue-600 transition">কলেজ</a>
-                <a href="#features" class="text-slate-600 hover:text-blue-600 transition">ফিচার</a>
-                <a href="#testimonials" class="text-slate-600 hover:text-blue-600 transition">মন্তব্য</a>
-                <a href="#faq" class="text-slate-600 hover:text-blue-600 transition">প্রশ্নোত্তর</a>
-                <a href="#developer" class="text-slate-600 hover:text-blue-600 transition">ডেভেলপার</a>
+                <a href="#college" class="text-slate-600 hover:text-blue-600 transition duration-300 ease-in-out">কলেজ</a>
+                <a href="#features" class="text-slate-600 hover:text-blue-600 transition duration-300 ease-in-out">ফিচার</a>
+                <a href="#routine" class="text-slate-600 hover:text-blue-600 transition duration-300 ease-in-out">দৈনিক রুটিন</a>
+                <a href="#testimonials" class="text-slate-600 hover:text-blue-600 transition duration-300 ease-in-out">মন্তব্য</a>
+                <a href="#faq" class="text-slate-600 hover:text-blue-600 transition duration-300 ease-in-out">প্রশ্নোত্তর</a>
+                <a href="#developer" class="text-slate-600 hover:text-blue-600 transition duration-300 ease-in-out">ডেভেলপার</a>
+            </nav>
+            <!-- Mobile Menu Button (Hamburger Icon) -->
+            <button @click="open = !open" class="md:hidden text-slate-600 hover:text-blue-600 focus:outline-none">
+                <svg x-show="!open" class="w-8 h-8 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <svg x-show="open" class="w-8 h-8 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-4"
+             class="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg shadow-lg py-4 z-40 mobile-menu-overlay">
+            <nav class="flex flex-col items-center space-y-4 font-semibold text-lg">
+                <a href="#college" @click="open = false" class="text-slate-700 hover:text-blue-600 transition w-full text-center py-2">কলেজ</a>
+                <a href="#features" @click="open = false" class="text-slate-700 hover:text-blue-600 transition w-full text-center py-2">ফিচার</a>
+                <a href="#routine" @click="open = false" class="text-slate-700 hover:text-blue-600 transition w-full text-center py-2">দৈনিক রুটিন</a>
+                <a href="#testimonials" @click="open = false" class="text-slate-700 hover:text-blue-600 transition w-full text-center py-2">মন্তব্য</a>
+                <a href="#faq" @click="open = false" class="text-slate-700 hover:text-blue-600 transition w-full text-center py-2">প্রশ্নোত্তর</a>
+                <a href="#developer" @click="open = false" class="text-slate-700 hover:text-blue-600 transition w-full text-center py-2">ডেভেলপার</a>
             </nav>
         </div>
     </header>
@@ -129,27 +291,27 @@
         <!-- Hero Section -->
         <section class="hero-gradient-bg text-white pt-24 pb-20 md:pb-32 overflow-hidden">
             <div class="container mx-auto px-6 text-center">
-                <div class="animated-element">
-                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">আপনার পড়াশোনাকে করুন আরও সহজ ও গতিময়</h1>
-                    <p class="text-lg md:text-xl text-blue-100 mb-12 max-w-3xl mx-auto">সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজের দ্বাদশ শ্রেণির (বিজ্ঞান) শিক্ষার্থীদের জন্য দুটি বিশেষায়িত অ্যাপ। আপনার পছন্দের ভার্সনটি বেছে নিন।</p>
+                <div class="animate__animated animate__fadeInUp">
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6 drop-shadow-lg">আপনার পড়াশোনাকে করুন আরও সহজ ও গতিময়</h1>
+                    <p class="text-lg md:text-xl text-blue-100 mb-12 max-w-3xl mx-auto opacity-90">সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজের দ্বাদশ শ্রেণির (বিজ্ঞান) শিক্ষার্থীদের জন্য দুটি বিশেষায়িত অ্যাপ। আপনার পছন্দের ভার্সনটি বেছে নিন।</p>
                 </div>
-                <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div class="grid md:grid-cols-2 gap-x-16 gap-y-8 items-start justify-center">
                     <!-- App Version 1 -->
-                    <div class="animated-element" style="transition-delay: 150ms;">
-                        <span class="bg-white/20 text-white text-sm font-bold px-4 py-1 rounded-full mb-6 inline-block">ক্লাসিক সংস্করণ</span>
+                    <div class="animate__animated animate__fadeInUp flex flex-col items-center" style="animation-delay: 0.3s;">
+                        <span class="bg-white/20 text-white text-sm font-bold px-4 py-1 rounded-full mb-6 inline-block shadow-md">ক্লাসিক সংস্করণ</span>
                         <div class="mobile-mockup-ultimate">
-                            <div class="mockup-screen-ultimate"><img src="https://i.postimg.cc/TYTbzjs2/Screenshot-20250703-131701-College-Routine.png" alt="কলেজ রুটিন অ্যাপ ক্লাসিক সংস্করণ"></div>
+                            <div class="mockup-screen-ultimate"><img src="https://i.postimg.cc/TYTbzjs2/Screenshot-20250703-131701-College-Routine.png" alt="কলেজ রুটিন অ্যাপ ক্লাসিক সংস্করণ" onerror="this.onerror=null;this.src='https://placehold.co/280x570/3b82f6/ffffff?text=Classic+App';" class="rounded-3xl"></div>
                         </div>
-                        <a id="downloadButton1" href="https://drive.google.com/file/d/1u2dWQwdbdm9yE-e16hPGZAbC9EHjJ0BK/view?usp=drivesdk" target="_blank" class="btn-shine mt-8 inline-block bg-white text-blue-600 font-bold text-lg px-10 py-4 rounded-full hover:bg-slate-100 transition-all transform hover:scale-110 duration-300 shadow-2xl">ডাউনলোড (v1)</a>
+                        <a id="downloadButton1" href="https://drive.google.com/file/d/1u2dWQwdbdm9yE-e16hPGZAbC9EHjJ0BK/view?usp=drivesdk" target="_blank" class="btn-shine mt-8 inline-block bg-white text-blue-600 font-bold text-lg px-10 py-4 rounded-full hover:bg-slate-100 transition-all transform hover:scale-110 duration-300 shadow-2xl animate__animated animate__pulse animate__infinite animate__slow">ডাউনলোড (v1)</a>
                         <div class="mt-4 text-sm text-blue-200">ডাউনলোড: <span id="downloadCounter1" class="font-inter font-bold">10</span></div>
                     </div>
                     <!-- App Version 2 -->
-                    <div class="animated-element" style="transition-delay: 300ms;">
-                        <span class="bg-white/20 text-white text-sm font-bold px-4 py-1 rounded-full mb-6 inline-block">প্রো সংস্করণ</span>
+                    <div class="animate__animated animate__fadeInUp flex flex-col items-center" style="animation-delay: 0.6s;">
+                        <span class="bg-white/20 text-white text-sm font-bold px-4 py-1 rounded-full mb-6 inline-block shadow-md">প্রো সংস্করণ</span>
                         <div class="mobile-mockup-ultimate" style="animation-delay: -3s;">
-                            <div class="mockup-screen-ultimate"><img src="https://i.postimg.cc/kGKyTnDj/Screenshot-20250703-140638-College-Routine.png" alt="কলেজ রুটিন অ্যাপ প্রো সংস্করণ"></div>
+                            <div class="mockup-screen-ultimate"><img src="https://i.postimg.cc/kGKyTnDj/Screenshot-20250703-140638-College-Routine.png" alt="কলেজ রুটিন অ্যাপ প্রো সংস্করণ" onerror="this.onerror=null;this.src='https://placehold.co/280x570/10b981/ffffff?text=Pro+App';" class="rounded-3xl"></div>
                         </div>
-                        <a id="downloadButton2" href="https://drive.google.com/file/d/1u6nzpLXLgoKl4iuuQJtB2mepmdi2ZIZf/view?usp=drivesdk" target="_blank" class="btn-shine mt-8 inline-block bg-gradient-to-r from-green-400 to-cyan-500 text-white font-bold text-lg px-10 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-110 duration-300 shadow-lg">ডাউনলোড (v2)</a>
+                        <a id="downloadButton2" href="https://drive.google.com/file/d/1u6nzpLXLgoKl4iuuQJtB2mepmdi2ZIZf/view?usp=drivesdk" target="_blank" class="btn-shine mt-8 inline-block bg-gradient-to-r from-green-400 to-cyan-500 text-white font-bold text-lg px-10 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-110 duration-300 shadow-lg animate__animated animate__pulse animate__infinite animate__slow">ডাউনলোড (v2)</a>
                         <div class="mt-4 text-sm text-blue-200">ডাউনলোড: <span id="downloadCounter2" class="font-inter font-bold">8</span></div>
                     </div>
                 </div>
@@ -159,15 +321,15 @@
         <!-- College Intro Section -->
         <section id="college" class="py-24 bg-white">
             <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-                <div class="animated-element">
-                    <img src="https://i.postimg.cc/QdHFDfJD/FB-IMG-1751530694220.jpg" alt="সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজ ক্যাম্পাস" class="rounded-2xl shadow-2xl w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                <div class="animate__animated animate__fadeInLeft">
+                    <img src="https://i.postimg.cc/QdHFDfJD/FB-IMG-1751530694220.jpg" alt="সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজ ক্যাম্পাস" onerror="this.onerror=null;this.src='https://placehold.co/600x400/60a5fa/ffffff?text=College+Campus';" class="rounded-2xl shadow-2xl w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
                 </div>
-                <div class="animated-element" style="transition-delay: 150ms;">
+                <div class="animate__animated animate__fadeInRight" style="animation-delay: 0.2s;">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-5">আমাদের কলেজ, আমাদের গর্ব</h2>
                     <p class="text-lg text-slate-600 mb-6 leading-relaxed">যশোর জেলার খাজুরাতে অবস্থিত সরকারি শহীদ সিরাজুদ্দীন হোসেন কলেজ এই অঞ্চলের একটি ঐতিহ্যবাহী এবং স্বনামধন্য শিক্ষা প্রতিষ্ঠান। আমরা শিক্ষার্থীদের মানসম্মত শিক্ষা প্রদানের মাধ্যমে একটি উজ্জ্বল ভবিষ্যৎ গঠনে প্রতিশ্রুতিবদ্ধ।</p>
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-md">
                         <h4 class="font-bold text-xl text-blue-800">দ্বাদশ শ্রেণি (বিজ্ঞান বিভাগ)</h4>
-                        <p class="text-blue-700 mt-2">এই অ্যাপটি বিশেষভাবে বিজ্ঞান বিভাগের দ্বাদশ শ্রেণির শিক্ষার্থীদের জন্য তৈরি করা হয়েছে, যাতে তারা তাদের একাডেমিক রুটিন এবং কার্যক্রম সহজে পরিচালনা করতে পারে।</p>
+                        <p class="text-blue-700 mt-2">এই অ্যাপটি বিশেষভাবে বিজ্ঞান বিভাগের দ্বাদশ শ্রেণির শিক্ষার্থীদের জন্য তৈরি করা হয়েছে, যাতে তারা তাদের একাডেমিক রুটিন এবং কার্যক্রম সহজে পরিচালনা করতে পারে।</p>
                     </div>
                 </div>
             </div>
@@ -176,29 +338,29 @@
         <!-- Features Section -->
         <section id="features" class="py-24 textured-bg">
             <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto animated-element">
-                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">আপনার পড়াশোনাকে গুছিয়ে নিন স্মার্ট উপায়ে</h2>
-                    <p class="text-slate-600 mt-4 text-lg">অ্যাপের আধুনিক ফিচারগুলো আপনাকে ক্লাসের সাথে সবসময় আপ-টু-ডেট রাখবে এবং পড়াশোনাকে করবে আরও আনন্দদায়ক।</p>
+                <div class="text-center max-w-3xl mx-auto animate__animated animate__fadeInDown">
+                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">আপনার পড়াশোনাকে গুছিয়ে নিন স্মার্ট উপায়ে</h2>
+                    <p class="text-slate-600 mt-4 text-lg">অ্যাপের আধুনিক ফিচারগুলো আপনাকে ক্লাসের সাথে সবসময় আপ-টু-ডেট রাখবে এবং পড়াশোনাকে করবে আরও আনন্দদায়ক।</p>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-                    <!-- Feature Cards with Custom SVG Icons -->
-                    <div class="feature-card p-6 text-center animated-element" style="transition-delay: 100ms;">
-                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" /><stop offset="100%" style="stop-color:#f87171;stop-opacity:1" /></linearGradient></defs><path fill="url(#g1)" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/><circle fill="url(#g1)" cx="12" cy="12" r="4"/><path fill="white" d="M12,9a3,3,0,1,0,3,3A3,3,0,0,0,12,9Z" class="animate-pulse"/></svg></div>
+                    <!-- Feature Cards with Custom SVG Icons (with subtle animations) -->
+                    <div class="feature-card p-6 text-center animated-element group animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16 group-hover:scale-110 transition-transform duration-300"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" /><stop offset="100%" style="stop-color:#f87171;stop-opacity:1" /></linearGradient></defs><path fill="url(#g1)" d="M12,2A10,10,1,0,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/><circle fill="url(#g1)" cx="12" cy="12" r="4"/><path fill="white" d="M12,9a3,3,0,1,0,3,3A3,3,0,0,0,12,9Z" class="animate-pulse"/></svg></div>
                         <h3 class="font-bold text-xl mt-4 text-slate-800">লাইভ ক্লাস ট্র্যাকিং</h3>
                         <p class="text-slate-600 mt-2 text-sm">কোন ক্লাস চলছে তা অ্যাপ খুললেই দেখুন।</p>
                     </div>
-                    <div class="feature-card p-6 text-center animated-element" style="transition-delay: 200ms;">
-                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" /><stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" /></linearGradient></defs><path fill="url(#g2)" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/><path fill="url(#g2)" d="M12,6a1,1,0,0,0-1,1v5a1,1,0,0,0,1,1h4a1,1,0,0,0,0-2h-3V7A1,1,0,0,0,12,6Z"/></svg></div>
+                    <div class="feature-card p-6 text-center animated-element group animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16 group-hover:scale-110 transition-transform duration-300"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" /><stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" /></linearGradient></defs><path fill="url(#g2)" d="M12,2A10,10,1,0,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/><path fill="url(#g2)" d="M12,6a1,1,0,0,0-1,1v5a1,1,0,0,0,1,1h4a1,1,0,0,0,0-2h-3V7A1,1,0,0,0,12,6Z"/></svg></div>
                         <h3 class="font-bold text-xl mt-4 text-slate-800">ক্লাস টাইমার</h3>
                         <p class="text-slate-600 mt-2 text-sm">বর্তমান ক্লাস শেষ হতে কতক্ষণ বাকি আছে জানুন।</p>
                     </div>
-                    <div class="feature-card p-6 text-center animated-element" style="transition-delay: 300ms;">
-                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#10b981;stop-opacity:1" /><stop offset="100%" style="stop-color:#34d399;stop-opacity:1" /></linearGradient></defs><path fill="url(#g3)" d="M15.71,12.71a1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l2.29,2.29a1,1,0,0,0,1.41-1.41L16.41,13A1,1,0,0,0,15.71,12.71Z"/><path fill="url(#g3)" d="M18.71,10.29l-2.29,2.29a1,1,0,0,0,1.41,1.41l2.29-2.29a1,1,0,0,0-1.41-1.41Z"/><path fill="url(#g3)" d="M4,11H8a1,1,0,0,0,0-2H4a1,1,0,0,0,0,2Z"/><path fill="url(#g3)" d="M10,11h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Z"/></svg></div>
+                    <div class="feature-card p-6 text-center animated-element group animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16 group-hover:scale-110 transition-transform duration-300"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#10b981;stop-opacity:1" /><stop offset="100%" style="stop-color:#34d399;stop-opacity:1" /></linearGradient></defs><path fill="url(#g3)" d="M15.71,12.71a1,1,0,0,0-.71.29,1,1,0,0,0,0,1.41l2.29,2.29a1,1,0,0,0,1.41-1.41L16.41,13A1,1,0,0,0,15.71,12.71Z"/><path fill="url(#g3)" d="M18.71,10.29l-2.29,2.29a1,1,0,0,0,1.41,1.41l2.29-2.29a1,1,0,0,0-1.41-1.41Z"/><path fill="url(#g3)" d="M4,11H8a1,1,0,0,0,0-2H4a1,1,0,0,0,0,2Z"/><path fill="url(#g3)" d="M10,11h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Z"/></svg></div>
                         <h3 class="font-bold text-xl mt-4 text-slate-800">পরবর্তী ক্লাসের প্রস্তুতি</h3>
                         <p class="text-slate-600 mt-2 text-sm">পরের ক্লাস কী এবং কখন শুরু হবে তা দেখুন।</p>
                     </div>
-                    <div class="feature-card p-6 text-center animated-element" style="transition-delay: 400ms;">
-                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16"><defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" /><stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" /></linearGradient></defs><path fill="url(#g4)" d="M19,4H5A3,3,0,0,0,2,7V17a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,13a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V7A1,1,0,0,1,5,6H19a1,1,0,0,1,1,1Z"/><rect fill="url(#g4)" x="6" y="10" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="11" y="10" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="16" y="10" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="6" y="14" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="11" y="14" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="16" y="14" width="2" height="2" rx="0.5"/></svg></div>
+                    <div class="feature-card p-6 text-center animated-element group animate__animated animate__fadeInUp" style="animation-delay: 0.7s;">
+                        <div class="w-24 h-24 flex items-center justify-center mx-auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-16 w-16 group-hover:scale-110 transition-transform duration-300"><defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" /><stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" /></linearGradient></defs><path fill="url(#g4)" d="M19,4H5A3,3,0,0,0,2,7V17a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,13a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V7A1,1,0,0,1,5,6H19a1,1,0,0,1,1,1Z"/><rect fill="url(#g4)" x="6" y="10" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="11" y="10" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="16" y="10" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="6" y="14" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="11" y="14" width="2" height="2" rx="0.5"/><rect fill="url(#g4)" x="16" y="14" width="2" height="2" rx="0.5"/></svg></div>
                         <h3 class="font-bold text-xl mt-4 text-slate-800">সম্পূর্ণ রুটিন</h3>
                         <p class="text-slate-600 mt-2 text-sm">সপ্তাহের যেকোনো দিনের রুটিন দেখুন এক ক্লিকে।</p>
                     </div>
@@ -206,38 +368,89 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="py-24 bg-white">
+        <!-- Daily Routine Section -->
+        <section id="routine" class="py-24 bg-white routine-table-section">
             <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto animated-element">
+                <div class="text-center max-w-3xl mx-auto animate__animated animate__fadeInDown">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">দ্বাদশ শ্রেণি (বিজ্ঞান) - দৈনিক রুটিন</h2>
+                    <p class="text-slate-600 mt-4 text-lg print-hidden-text">এখানে দ্বাদশ শ্রেণির বিজ্ঞান বিভাগের ক্লাস রুটিন দেওয়া হলো। এটি প্রিন্ট করে আপনার পড়ার টেবিলে রাখতে পারেন।</p>
+                </div>
+                <div class="routine-table-container mt-12 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <table class="routine-table rounded-lg shadow-lg" id="routineTable">
+                        <thead>
+                            <tr>
+                                <th>সময়</th>
+                                <th>রবিবার</th>
+                                <th>সোমবার</th>
+                                <th>মঙ্গলবার</th>
+                                <th>বুধবার</th>
+                                <th>বৃহস্পতিবার</th>
+                                <!-- Removed Friday and Saturday as per user request -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Routine will be rendered here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Custom Modal for Alerts -->
+                <div id="customAlertModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-[100]">
+                    <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full text-center transform scale-95 transition-transform duration-300 ease-out">
+                        <h3 id="alertTitle" class="text-xl font-bold text-slate-800 mb-4"></h3>
+                        <p id="alertMessage" class="text-slate-600 mb-6"></p>
+                        <button id="alertCloseBtn" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300">ঠিক আছে</button>
+                    </div>
+                </div>
+
+                <div class="print-edit-buttons-container text-center mt-12 flex flex-wrap justify-center gap-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <button id="editRoutineBtn" class="btn-shine inline-flex items-center bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-blue-700 transition-all transform hover:scale-105 duration-300 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                        রুটিন এডিট করুন
+                    </button>
+                    <button id="saveRoutineBtn" class="btn-shine hidden inline-flex items-center bg-green-600 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-green-700 transition-all transform hover:scale-105 duration-300 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-3m-1-4l-3 3m0 0l-3-3m3 3V4" /></svg>
+                        রুটিন সেভ করুন
+                    </button>
+                    <button id="printRoutineBtn" class="btn-shine inline-flex items-center bg-slate-600 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-slate-700 transition-all transform hover:scale-105 duration-300 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m0 0v3a2 2 0 002 2h6a2 2 0 002-2v-3M7 17h10M10 10V3M10 3L7 6M10 3l3 3" /></svg>
+                        রুটিন প্রিন্ট করুন
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 textured-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto animate__animated animate__fadeInDown">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">বন্ধুদের চোখে এই অ্যাপ</h2>
-                    <p class="text-slate-600 mt-4 text-lg">আমার সহপাঠী এবং বন্ধুরা অ্যাপটি ব্যবহার করে তাদের মূল্যবান মতামত জানিয়েছে।</p>
+                    <p class="text-slate-600 mt-4 text-lg">আমার সহপাঠী এবং বন্ধুরা অ্যাপটি ব্যবহার করে তাদের মূল্যবান মতামত জানিয়েছে।</p>
                 </div>
                 <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
                     <!-- Testimonial Card 1 -->
-                    <div class="testimonial-card p-8 text-center animated-element" style="transition-delay: 100ms;">
-                        <div class="w-20 h-20 rounded-full mx-auto mb-5 border-4 border-white shadow-lg bg-blue-100 flex items-center justify-center">
+                    <div class="testimonial-card p-8 text-center animated-element animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                        <div class="w-20 h-20 rounded-full mx-auto mb-5 border-4 border-white shadow-lg bg-blue-100 flex items-center justify-center animate-pulse-slow">
                             <span class="text-3xl font-bold text-blue-600">সি</span>
                         </div>
-                        <p class="text-slate-600 italic">"এই অ্যাপটা আমাদের অনেক সময় বাঁচিয়ে দিয়েছে। এখন আর রুটিন নিয়ে ভাবতে হয় না। রাহাদকে ধন্যবাদ এমন একটা কাজের জন্য।"</p>
+                        <p class="text-slate-600 italic leading-relaxed">"এই অ্যাপটা আমাদের অনেক সময় বাঁচিয়ে দিয়েছে। এখন আর রুটিন নিয়ে ভাবতে হয় না। রাহাদকে ধন্যবাদ এমন একটা কাজের জন্য।"</p>
                         <h4 class="font-bold text-lg text-blue-600 mt-5">সিয়াম আল সামি</h4>
                         <p class="text-sm text-slate-500">সহপাঠী</p>
                     </div>
                     <!-- Testimonial Card 2 -->
-                    <div class="testimonial-card p-8 text-center animated-element" style="transition-delay: 200ms;">
-                        <div class="w-20 h-20 rounded-full mx-auto mb-5 border-4 border-white shadow-lg bg-green-100 flex items-center justify-center">
+                    <div class="testimonial-card p-8 text-center animated-element animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                        <div class="w-20 h-20 rounded-full mx-auto mb-5 border-4 border-white shadow-lg bg-green-100 flex items-center justify-center animate-pulse-slow" style="animation-delay: 0.5s;">
                             <span class="text-3xl font-bold text-green-600">জী</span>
                         </div>
-                        <p class="text-slate-600 italic">"লাইভ ক্লাস ট্র্যাকিং ফিচারটা অসাধারণ! কোন ক্লাস চলছে বা কোনটা শুরু হবে, সব এক নজরে দেখা যায়। পড়াশোনা এখন অনেক সহজ মনে হয়।"</p>
+                        <p class="text-slate-600 italic leading-relaxed">"লাইভ ক্লাস ট্র্যাকিং ফিচারটা অসাধারণ! কোন ক্লাস চলছে বা কোনটা শুরু হবে, সব এক নজরে দেখা যায়। পড়াশোনা এখন অনেক সহজ মনে হয়।"</p>
                         <h4 class="font-bold text-lg text-green-600 mt-5">জীবন হোসেন</h4>
                         <p class="text-sm text-slate-500">সহপাঠী</p>
                     </div>
                     <!-- Testimonial Card 3 -->
-                    <div class="testimonial-card p-8 text-center animated-element" style="transition-delay: 300ms;">
-                        <div class="w-20 h-20 rounded-full mx-auto mb-5 border-4 border-white shadow-lg bg-purple-100 flex items-center justify-center">
+                    <div class="testimonial-card p-8 text-center animated-element animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+                        <div class="w-20 h-20 rounded-full mx-auto mb-5 border-4 border-white shadow-lg bg-purple-100 flex items-center justify-center animate-pulse-slow" style="animation-delay: 1s;">
                             <span class="text-3xl font-bold text-purple-600">রা</span>
                         </div>
-                        <p class="text-slate-600 italic">"অ্যাপটার ডিজাইন এবং ব্যবহার করার সুবিধা দুটোই চমৎকার। বিশেষ করে প্রো ভার্সনটা আমার খুব পছন্দের। ডেভেলপারকে অনেক শুভেচ্ছা।"</p>
+                        <p class="text-slate-600 italic leading-relaxed">"অ্যাপটার ডিজাইন এবং ব্যবহার করার সুবিধা দুটোই চমৎকার। বিশেষ করে প্রো ভার্সনটা আমার খুব পছন্দের। ডেভেলপারকে অনেক শুভেচ্ছা।"</p>
                         <h4 class="font-bold text-lg text-purple-600 mt-5">রাতুল</h4>
                         <p class="text-sm text-slate-500">সহপাঠী</p>
                     </div>
@@ -246,41 +459,41 @@
         </section>
 
         <!-- FAQ Section -->
-        <section id="faq" class="py-24 textured-bg">
+        <section id="faq" class="py-24 bg-white">
             <div class="container mx-auto px-6 max-w-4xl">
-                <div class="text-center max-w-3xl mx-auto animated-element">
+                <div class="text-center max-w-3xl mx-auto animate__animated animate__fadeInDown">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">সাধারণ জিজ্ঞাসা</h2>
-                    <p class="text-slate-600 mt-4 text-lg">অ্যাপটি সম্পর্কে আপনার মনে থাকা কিছু সাধারণ প্রশ্নের উত্তর এখানে দেওয়া হলো।</p>
+                    <p class="text-slate-600 mt-4 text-lg">অ্যাপটি সম্পর্কে আপনার মনে থাকা কিছু সাধারণ প্রশ্নের উত্তর এখানে দেওয়া হলো।</p>
                 </div>
                 <div class="mt-12 space-y-4" x-data="{}">
                     <!-- FAQ Item 1 -->
-                    <div x-data="{ open: false }" class="bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md animated-element" style="transition-delay: 100ms;">
-                        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold text-slate-800 p-6">
+                    <div x-data="{ open: false }" class="bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md animated-element animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold text-slate-800 p-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-2xl">
                             <span>আমি কি অ্যাপের রুটিন পরিবর্তন বা এডিট করতে পারবো?</span>
                             <svg :class="{'rotate-180': open}" class="w-6 h-6 text-blue-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div x-show="open" x-collapse class="text-slate-600">
-                            <p class="px-6 pb-6">আপাতত, ব্যবহারকারীরা অ্যাপের ভেতর থেকে রুটিন পরিবর্তন করতে পারবেন না। রুটিনটি কলেজ কর্তৃপক্ষ দ্বারা নির্ধারিত এবং অ্যাপে নির্দিষ্ট করে দেওয়া আছে। ভবিষ্যতে রুটিন আপডেট হলে অ্যাপের নতুন সংস্করণ প্রকাশ করা হবে।</p>
+                            <p class="px-6 pb-6 border-t border-slate-100 pt-4">হ্যাঁ, এখন আপনি রুটিন টেবিলটি সরাসরি এডিট করতে পারবেন। "রুটিন এডিট করুন" বাটনে ক্লিক করে যেকোনো বিষয় বা ফাঁকা ঘর পরিবর্তন করতে পারবেন। পরিবর্তন সেভ করতে "রুটিন সেভ করুন" বাটনে ক্লিক করুন।</p>
                         </div>
                     </div>
                     <!-- FAQ Item 2 -->
-                    <div x-data="{ open: false }" class="bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md animated-element" style="transition-delay: 200ms;">
-                        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold text-slate-800 p-6">
+                    <div x-data="{ open: false }" class="bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md animated-element animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold text-slate-800 p-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-2xl">
                             <span>অ্যাপটির দুটি ভার্সন (ক্লাসিক ও প্রো) এর মধ্যে পার্থক্য কী?</span>
                             <svg :class="{'rotate-180': open}" class="w-6 h-6 text-blue-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div x-show="open" x-collapse class="text-slate-600">
-                           <p class="px-6 pb-6">ক্লাসিক সংস্করণটিতে প্রয়োজনীয় সকল ফিচার রয়েছে। প্রো সংস্করণটিতে কিছু অতিরিক্ত সুবিধা, যেমন - বিজ্ঞাপনমুক্ত ইন্টারফেস, বিশেষ থিম এবং আরও উন্নত ট্র্যাকিং সিস্টেম যুক্ত করা হয়েছে যা আপনার অভিজ্ঞতাকে আরও সমৃদ্ধ করবে।</p>
+                           <p class="px-6 pb-6 border-t border-slate-100 pt-4">ক্লাসিক সংস্করণটিতে প্রয়োজনীয় সকল ফিচার রয়েছে। প্রো সংস্করণটিতে কিছু অতিরিক্ত সুবিধা, যেমন - বিজ্ঞাপনমুক্ত ইন্টারফেস, বিশেষ থিম এবং আরও উন্নত ট্র্যাকিং সিস্টেম যুক্ত করা হয়েছে যা আপনার অভিজ্ঞতাকে আরও সমৃদ্ধ করবে।</p>
                         </div>
                     </div>
                     <!-- FAQ Item 3 -->
-                    <div x-data="{ open: false }" class="bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md animated-element" style="transition-delay: 300ms;">
-                        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold text-slate-800 p-6">
-                            <span>অ্যাপটি ব্যবহার করতে কি ইন্টারনেট সংযোগ প্রয়োজন?</span>
+                    <div x-data="{ open: false }" class="bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md animated-element animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+                        <button @click="open = !open" class="w-full flex justify-between items-center text-left text-lg font-semibold text-slate-800 p-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-2xl">
+                            <span>অ্যাপটি ব্যবহার করতে কি ইন্টারনেট সংযোগ প্রয়োজন?</span>
                             <svg :class="{'rotate-180': open}" class="w-6 h-6 text-blue-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div x-show="open" x-collapse class="text-slate-600">
-                            <p class="px-6 pb-6">অ্যাপটি একবার ইনস্টল করার পর রুটিন দেখার জন্য কোনো ইন্টারনেট সংযোগের প্রয়োজন নেই। এটি সম্পূর্ণ অফলাইনে কাজ করে। তবে অ্যাপের নতুন আপডেট ডাউনলোড করার জন্য ইন্টারনেট লাগবে।</p>
+                            <p class="px-6 pb-6 border-t border-slate-100 pt-4">অ্যাপটি একবার ইনস্টল করার পর রুটিন দেখার জন্য কোনো ইন্টারনেট সংযোগের প্রয়োজন নেই। এটি সম্পূর্ণ অফলাইনে কাজ করে। তবে অ্যাপের নতুন আপডেট ডাউনলোড করার জন্য ইন্টারনেট লাগবে।</p>
                         </div>
                     </div>
                 </div>
@@ -290,14 +503,14 @@
         <!-- Developer Section -->
         <section id="developer" class="py-24 developer-section-bg overflow-hidden">
             <div class="container mx-auto px-6">
-                <div class="relative bg-slate-800/70 backdrop-blur-xl rounded-3xl p-8 md:p-12 grid md:grid-cols-2 gap-12 items-center shadow-2xl animated-element border border-slate-700">
+                <div class="relative bg-slate-800/70 backdrop-blur-xl rounded-3xl p-8 md:p-12 grid md:grid-cols-2 gap-12 items-center shadow-2xl animate__animated animate__zoomIn border border-slate-700">
                     <div class="relative z-10 text-center md:text-left">
-                        <div class="w-32 h-32 rounded-full shadow-2xl mb-6 border-4 border-slate-700 bg-slate-200 flex items-center justify-center mx-auto md:mx-0">
+                        <div class="w-32 h-32 rounded-full shadow-2xl mb-6 border-4 border-slate-700 bg-slate-200 flex items-center justify-center mx-auto md:mx-0 transform hover:scale-105 transition-transform duration-300">
                            <span class="text-5xl font-bold text-slate-600">রা</span>
                         </div>
                         <h2 class="text-3xl font-bold text-white">অ্যাপটির কারিগর</h2>
-                        <p class="text-2xl text-cyan-400 mt-2 font-semibold">রাহাদ হোসেন</p>
-                        <p class="text-slate-300 mt-4 max-w-lg mx-auto md:mx-0">এই কলেজেরই একজন শিক্ষার্থী হিসেবে, আমি আমার বন্ধুদের এবং জুনিয়রদের পড়াশোনা সহজ করার লক্ষ্যে এই অ্যাপটি তৈরি করেছি। আপনাদের মতামত ও পরামর্শ सादर आमंत्रित।</p>
+                        <p class="text-slate-300 mt-2 text-2xl text-cyan-400 font-semibold">রাহাদ হোসেন</p>
+                        <p class="text-slate-300 mt-4 max-w-lg mx-auto md:mx-0">এই কলেজেরই একজন শিক্ষার্থী হিসেবে, আমি আমার বন্ধুদের এবং জুনিয়রদের পড়াশোনা সহজ করার লক্ষ্যে এই অ্যাপটি তৈরি করেছি। আপনাদের মতামত ও পরামর্শ सादर आमंत्रित।</p>
                     </div>
                     <div class="relative z-10 flex flex-col space-y-4">
                         <a href="https://www.facebook.com/share/16xp26JpwM/" target="_blank" class="group flex items-center bg-blue-600 text-white px-6 py-4 rounded-xl hover:bg-blue-500 transition-all transform hover:scale-105 duration-300 shadow-lg">
@@ -323,31 +536,278 @@
 
     <!-- JavaScript for Counters & Animations -->
     <script>
+        // Function to show a custom alert modal
+        function showCustomAlert(title, message) {
+            const modal = document.getElementById('customAlertModal');
+            document.getElementById('alertTitle').textContent = title;
+            document.getElementById('alertMessage').textContent = message;
+            modal.classList.remove('hidden');
+            // Add animation class for modal entry
+            modal.querySelector('div').classList.add('scale-100', 'opacity-100');
+            modal.querySelector('div').classList.remove('scale-95', 'opacity-0');
+        }
+
+        // Function to hide the custom alert modal
+        function hideCustomAlert() {
+            const modal = document.getElementById('customAlertModal');
+            // Add animation class for modal exit
+            modal.querySelector('div').classList.add('scale-95', 'opacity-0');
+            modal.querySelector('div').classList.remove('scale-100', 'opacity-100');
+            // Hide after animation
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Counters
+            // Event listener for the custom alert close button
+            document.getElementById('alertCloseBtn').addEventListener('click', hideCustomAlert);
+
+            // --- Download Counters ---
             const setupCounter = (buttonId, counterId, storageKey, initialValue) => {
                 const button = document.getElementById(buttonId);
                 const counterElement = document.getElementById(counterId);
                 let count = parseInt(localStorage.getItem(storageKey)) || initialValue;
                 const updateCounter = () => { counterElement.innerText = count.toLocaleString('bn-BD'); };
                 updateCounter();
-                button.addEventListener('click', () => { setTimeout(() => { count++; localStorage.setItem(storageKey, count); updateCounter(); }, 300); });
+                button.addEventListener('click', () => {
+                    // Increment counter after a small delay to allow link navigation
+                    setTimeout(() => {
+                        count++;
+                        localStorage.setItem(storageKey, count);
+                        updateCounter();
+                    }, 300);
+                });
             };
             setupCounter('downloadButton1', 'downloadCounter1', 'appDownloadCountV1_ultimate', 10);
             setupCounter('downloadButton2', 'downloadCounter2', 'appDownloadCountV2_ultimate', 8);
 
-            // Scroll Animations
-            const animatedElements = document.querySelectorAll('.animated-element');
+            // --- Scroll Animations (Animate.css integration) ---
+            const animatedElements = document.querySelectorAll('.animate__animated');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
+                        entry.target.classList.add('is-visible'); // Trigger Animate.css
+                        observer.unobserve(entry.target); // Stop observing once visible
                     }
                 });
-            }, { threshold: 0.1 });
-            animatedElements.forEach(el => observer.observe(el));
+            }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+            animatedElements.forEach(el => {
+                // Check if the element already has a specific Animate.css class like animate__fadeInUp
+                // If not, add a default one, e.g., animate__fadeIn
+                if (!el.classList.toString().includes('animate__')) {
+                    el.classList.add('animate__fadeIn');
+                }
+                observer.observe(el);
+            });
+
+            // --- Routine Table Logic ---
+            const routineTableBody = document.querySelector('#routineTable tbody');
+            const editRoutineBtn = document.getElementById('editRoutineBtn');
+            const saveRoutineBtn = document.getElementById('saveRoutineBtn');
+            const printRoutineBtn = document.getElementById('printRoutineBtn');
+
+            let isEditing = false;
+
+            // Initial routine data (Friday and Saturday removed as requested)
+            const initialRoutineData = {
+                "times": [
+                    "৯:০০ - ৯:৪০",
+                    "৯:৪০ - ১০:২০",
+                    "১০:২০ - ১১:০০",
+                    "১১:০০ - ১১:৪০",
+                    "১১:৪০ - ১২:২০",
+                    "১২:২০ - ১:০০",
+                    "১:০০ - ১:৪০"
+                ],
+                "routine": {
+                    "রবিবার": [
+                        "রসায়ন", "তথ্যপ্রযুক্তি", "গণিত", "ইংরেজি", "পদার্থবিজ্ঞান", "জীববিজ্ঞান", "ব্যবহারিক পদার্থবিজ্ঞান"
+                    ],
+                    "সোমবার": [
+                        "জীববিজ্ঞান", "বাংলা", "গণিত", "রসায়ন", "ইংরেজি", "ব্যবহারিক জীববিজ্ঞান", "-"
+                    ],
+                    "মঙ্গলবার": [
+                        "পদার্থবিজ্ঞান", "রসায়ন", "গণিত", "জীববিজ্ঞান", "বাংলা", "বিরতি", "ইংরেজি"
+                    ],
+                    "বুধবার": [
+                        "গণিত", "বাংলা", "জীববিজ্ঞান", "ইংরেজি", "পদার্থবিজ্ঞান", "-", "-"
+                    ],
+                    "বৃহস্পতিবার": [
+                        "রসায়ন", "পদার্থবিজ্ঞান", "বাংলা", "গণিত", "ব্যবহারিক তথ্যপ্রযুক্তি", "-", "-"
+                    ]
+                }
+            };
+
+            let currentRoutine = {}; // Will hold the active routine data
+
+            // Function to load routine from localStorage or use initial data
+            const loadRoutine = () => {
+                const savedRoutine = localStorage.getItem('collegeRoutine');
+                if (savedRoutine) {
+                    try {
+                        currentRoutine = JSON.parse(savedRoutine);
+                        // Ensure consistency with the new structure (remove Friday/Saturday if present)
+                        const daysToKeep = ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার"];
+                        const newRoutine = {};
+                        for (const day of daysToKeep) {
+                            if (currentRoutine.routine[day]) {
+                                // Ensure each day's array has the correct length
+                                if (currentRoutine.routine[day].length !== initialRoutineData.times.length) {
+                                    console.warn(`Routine data for ${day} has inconsistent length. Adjusting.`);
+                                    currentRoutine.routine[day] = currentRoutine.routine[day].slice(0, initialRoutineData.times.length);
+                                    while (currentRoutine.routine[day].length < initialRoutineData.times.length) {
+                                        currentRoutine.routine[day].push("-");
+                                    }
+                                }
+                                newRoutine[day] = currentRoutine.routine[day];
+                            } else {
+                                // If a day is missing, use initial empty slots for it
+                                newRoutine[day] = Array(initialRoutineData.times.length).fill("-");
+                            }
+                        }
+                        currentRoutine.routine = newRoutine;
+                        // Also ensure times array is consistent
+                        currentRoutine.times = initialRoutineData.times;
+
+                    } catch (e) {
+                        console.error("Error parsing saved routine, using initial data:", e);
+                        currentRoutine = initialRoutineData;
+                    }
+                } else {
+                    currentRoutine = initialRoutineData;
+                }
+            };
+
+            // Function to render the routine table
+            const renderRoutineTable = () => {
+                routineTableBody.innerHTML = ''; // Clear existing table rows
+                // Days to display, excluding Friday and Saturday
+                const days = ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার"];
+
+                currentRoutine.times.forEach((timeSlot, slotIndex) => {
+                    const row = document.createElement('tr');
+                    const timeCell = document.createElement('td');
+                    timeCell.textContent = timeSlot;
+                    timeCell.classList.add('font-inter', 'font-medium', 'text-slate-800'); // Add styling to time cells
+                    timeCell.setAttribute('data-is-time-slot', 'true'); // Mark as time slot for editability logic
+                    row.appendChild(timeCell);
+
+                    days.forEach(day => {
+                        const subjectCell = document.createElement('td');
+                        const subject = currentRoutine.routine[day][slotIndex];
+                        subjectCell.textContent = subject;
+                        subjectCell.setAttribute('data-day', day);
+                        subjectCell.setAttribute('data-slot-index', slotIndex);
+
+                        // Apply empty-slot-cell class if content is '-' or 'বিরতি'
+                        if (subject === "-" || subject === "বিরতি") {
+                            subjectCell.classList.add('empty-slot-cell');
+                        } else {
+                            subjectCell.classList.remove('empty-slot-cell');
+                        }
+
+                        // Make all subject cells editable when in edit mode
+                        subjectCell.contentEditable = isEditing ? 'true' : 'false';
+                        if (isEditing) {
+                            subjectCell.classList.add('bg-amber-50', 'border-dashed', 'border-amber-500', 'cursor-text');
+                            subjectCell.classList.remove('text-slate-700');
+                        } else {
+                            subjectCell.classList.remove('bg-amber-50', 'border-dashed', 'border-amber-500', 'cursor-text');
+                            subjectCell.classList.add('text-slate-700');
+                        }
+                        row.appendChild(subjectCell);
+                    });
+                    routineTableBody.appendChild(row);
+                });
+            };
+
+            // Function to toggle edit mode
+            const toggleEditMode = () => {
+                isEditing = !isEditing;
+
+                // Make time cells editable
+                const timeCells = routineTableBody.querySelectorAll('td[data-is-time-slot="true"]');
+                timeCells.forEach(cell => {
+                    cell.contentEditable = isEditing ? 'true' : 'false';
+                    if (isEditing) {
+                        cell.classList.add('bg-amber-50', 'border-dashed', 'border-amber-500', 'cursor-text');
+                        cell.classList.remove('text-slate-800');
+                    } else {
+                        cell.classList.remove('bg-amber-50', 'border-dashed', 'border-amber-500', 'cursor-text');
+                        cell.classList.add('text-slate-800');
+                    }
+                });
+
+                // Make all subject cells editable
+                const subjectCells = routineTableBody.querySelectorAll('td[data-day]');
+                subjectCells.forEach(cell => {
+                    cell.contentEditable = isEditing ? 'true' : 'false';
+                    if (isEditing) {
+                        cell.classList.add('bg-amber-50', 'border-dashed', 'border-amber-500', 'cursor-text');
+                        cell.classList.remove('text-slate-700');
+                        cell.classList.remove('empty-slot-cell'); // Remove empty-slot style when editing
+                    } else {
+                        cell.classList.remove('bg-amber-50', 'border-dashed', 'border-amber-500', 'cursor-text');
+                        cell.classList.add('text-slate-700');
+                        // Re-apply empty-slot-cell if content is '-' or 'বিরতি'
+                        if (cell.textContent.trim() === "-" || cell.textContent.trim() === "বিরতি") {
+                            cell.classList.add('empty-slot-cell');
+                        }
+                    }
+                });
+
+                if (isEditing) {
+                    editRoutineBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>এডিট মোড বন্ধ করুন';
+                    editRoutineBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                    editRoutineBtn.classList.add('bg-red-600', 'hover:bg-red-700');
+                    saveRoutineBtn.classList.remove('hidden');
+                    printRoutineBtn.classList.add('hidden');
+                } else {
+                    editRoutineBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>রুটিন এডিট করুন';
+                    editRoutineBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                    editRoutineBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                    saveRoutineBtn.classList.add('hidden');
+                    printRoutineBtn.classList.remove('hidden');
+                    renderRoutineTable(); // Re-render to ensure non-editable cells are updated and styles are reset
+                }
+            };
+
+            // Function to save the routine
+            const saveRoutine = () => {
+                // Save time slots
+                const timeCells = routineTableBody.querySelectorAll('td[data-is-time-slot="true"]');
+                timeCells.forEach((cell, index) => {
+                    currentRoutine.times[index] = cell.textContent.trim();
+                });
+
+                // Save subject cells
+                const subjectCells = routineTableBody.querySelectorAll('td[data-day]');
+                subjectCells.forEach(cell => {
+                    const day = cell.getAttribute('data-day');
+                    const slotIndex = parseInt(cell.getAttribute('data-slot-index'));
+                    let newContent = cell.textContent.trim();
+                    // If user clears the cell, save it as '-' for consistency
+                    if (newContent === '') {
+                        newContent = '-';
+                    }
+                    currentRoutine.routine[day][slotIndex] = newContent;
+                });
+                localStorage.setItem('collegeRoutine', JSON.stringify(currentRoutine));
+                toggleEditMode(); // Exit edit mode after saving
+                showCustomAlert('সফল!', 'রুটিন সফলভাবে সেভ করা হয়েছে!'); // Use custom alert
+            };
+
+            // Event Listeners
+            editRoutineBtn.addEventListener('click', toggleEditMode);
+            saveRoutineBtn.addEventListener('click', saveRoutine);
+            printRoutineBtn.addEventListener('click', () => window.print());
+
+            // Initial load and render
+            loadRoutine();
+            renderRoutineTable();
         });
     </script>
 </body>
-</html>
+    </html>
